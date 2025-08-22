@@ -5,8 +5,8 @@
  */
 
 #include <behaviors.dtsi>
-#include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/keys.h>
 #include "keymap_eurkey_swiss_de.h"
 
 #define DEFAULT_L 	0
@@ -21,15 +21,11 @@
 
 // Using layer taps on thumbs, having quick tap as well helps w/ repeating space/backspace
 
-&lt {
-    quick_tap_ms = <200>;
-};
+&lt { quick_tap_ms = <200>; };
 
 // Sticky Layer Behavior - release sticky behavior after x ms
 
-&sk {
-    release-after-ms = <1800>;
-};
+&sk { release-after-ms = <1800>; };
 
 // MACROS
 // ===========================================================================================================
@@ -42,46 +38,55 @@
 	                   '--------------------------------'
 
 */
-    / {
+
+/ {
     macros {
         macro_sch: macro_sch {
             label = "Macro_sch";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <
-                &macro_tap &kp S
-                &macro_release &kp RSHIFT
-                &macro_tap &kp C &kp H
-            >;
+            bindings =
+                <&macro_tap>,
+                <&kp S>,
+                <&macro_release>,
+                <&kp RSHIFT>,
+                <&macro_tap>,
+                <&kp C &kp H>;
+
             tap-ms = <20>;
-            };
-        
+        };
+
         macro_ch: macro_ch {
             label = "Macro_ch";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <
-                &macro_tap &kp C
-                &macro_release &kp RSHIFT
-                &macro_tap &kp H
-            >;
+            bindings =
+                <&macro_tap>,
+                <&kp C>,
+                <&macro_release>,
+                <&kp RSHIFT>,
+                <&macro_tap>,
+                <&kp H>;
+
             tap-ms = <20>;
-            };
+        };
 
         macro_zu: macro_zu {
             label = "Macro_zu";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <
-                &macro_tap &kp Z
-                &macro_release &kp RSHIFT
-                &macro_tap &kp U
-            >;
-            tap-ms = <20>;
-            };
+            bindings =
+                <&macro_tap>,
+                <&kp Z>,
+                <&macro_release>,
+                <&kp RSHIFT>,
+                <&macro_tap>,
+                <&kp U>;
 
+            tap-ms = <20>;
         };
     };
+};
 
 // COMBOS
 // ===========================================================================================================
@@ -195,7 +200,6 @@
             layers = <1 7 8>;
         };
 
-
         // BASE LAYERS
 
         combo_kneir_mac_layer {
@@ -240,7 +244,6 @@
             bindings = <&kp PERCENT>;
             layers = <2>;
         };
-
 
         // ALPHAS
 
@@ -300,9 +303,7 @@
             bindings = <&macro_zu>;
             layers = <2>;
         };
-
     };
-
 
     // BEHAVIOR    
     // ===========================================================================================================
@@ -315,9 +316,7 @@
             tapping_term_ms = <170>;
             quick_tap_ms = <0>;
             flavor = "tap-preferred";
-            bindings =
-                <&kp>,
-                <&kp>;
+            bindings = <&kp>, <&kp>;
         };
     };
 
@@ -339,16 +338,16 @@
         default_layer {
             label = "Base";
             bindings = <
-&mt DEL Q  &kp W  &kp E      &kp R      &kp T           &kp Y        &kp U      &kp I     &kp O    &kp P
-    &kp A  &kp S  &kp D      &kp F      &kp G           &kp H        &kp J      &kp K     &kp L    &kp BACKSPACE
-    &kp Z  &kp X  &kp C      &kp V      &kp B           &kp N        &kp M      &kp COMMA &kp DOT  &mo 3
-                             &kp LCTRL  &kp SPACE       &kp RSHIFT   &kp LALT
+&kp Q  &kp W  &kp E  &kp R      &kp T      &kp Y       &kp U     &kp I      &kp O    &kp P
+&kp A  &kp S  &kp D  &kp F      &kp G      &kp H       &kp J     &kp K      &kp L    &kp BACKSPACE
+&kp Z  &kp X  &kp C  &kp V      &kp B      &kp N       &kp M     &kp COMMA  &kp DOT  &mo 3
+                     &kp LCTRL  &kp SPACE  &kp RSHIFT  &kp LALT
             >;
         };
-    
-    // ===========================================================================================================
-    // -----------------------------------------------------------------------------
-    /* 1 = Default MAC
+
+        // ===========================================================================================================
+        // -----------------------------------------------------------------------------
+        /* 1 = Default MAC
         .----------------------------------------------------------------------.
         |Q DEL|  W  |  C  |  V  |  X  |          |  J  |  F  |  U  |  O  |  Z  |
         |  A  |  S  |  T  |  R  |  B  |          |  K  |  N  |  E  |  I  |  H  |
@@ -360,16 +359,16 @@
         MAC_layer {
             label = "MAC";
             bindings = <
-&mt DEL Q  &kp W  &kp C      &kp V      &kp X           &kp J        &kp F      &kp U     &kp O    &kp Z
-    &kp A  &kp S  &kp T      &kp R      &kp B           &kp K        &kp N      &kp E     &kp I    &kp H
-    &kp Y  &kp G  &kp L      &kp D      &kp P           &kp DOT      &kp M      &kp BACKSPACE  &kp COMMA  &mo 3
-                             &kp LGUI   &kp SPACE       &kp RSHIFT   &kp RALT
+&mt DEL Q  &kp W  &kp C  &kp V     &kp X      &kp J       &kp F     &kp U          &kp O      &kp Z
+&kp A      &kp S  &kp T  &kp R     &kp B      &kp K       &kp N     &kp E          &kp I      &kp H
+&kp Y      &kp G  &kp L  &kp D     &kp P      &kp DOT     &kp M     &kp BACKSPACE  &kp COMMA  &mo 3
+                         &kp LGUI  &kp SPACE  &kp RSHIFT  &kp RALT
             >;
         };
 
-    // ===========================================================================================================
-    // -----------------------------------------------------------------------------
-    /* 2 = KNEIR Layout
+        // ===========================================================================================================
+        // -----------------------------------------------------------------------------
+        /* 2 = KNEIR Layout
         .----------------------------------------------------------------------.
         |Q DEL|  W  |  C  |  V  |  X  |          |  J  |  F  |  U  |  O  |  Z  |
         |  A  |  S  |  T  |  R  |  B  |          |  K  |  N  |  E  |  I  |  H  |
@@ -381,13 +380,12 @@
         KNEIR_layer {
             label = "KNEIR";
             bindings = <
-&mt DEL Q  &kp W  &kp C      &kp V      &kp X           &kp J        &kp F      &kp U     &kp O    &kp Z
-    &kp A  &kp S  &kp T      &kp R      &kp B           &kp K        &kp N      &kp E     &kp I    &kp H
-    &kp Y  &kp G  &kp L      &kp D      &kp P           &kp DOT      &kp M      &kp BACKSPACE  &kp COMMA  &mo 3
-                             &kp LCTRL  &kp SPACE       &kp RSHIFT   &kp RALT
+&mt DEL Q  &kp W  &kp C  &kp V      &kp X      &kp J       &kp F     &kp U          &kp O      &kp Z
+&kp A      &kp S  &kp T  &kp R      &kp B      &kp K       &kp N     &kp E          &kp I      &kp H
+&kp Y      &kp G  &kp L  &kp D      &kp P      &kp DOT     &kp M     &kp BACKSPACE  &kp COMMA  &mo 3
+                         &kp LCTRL  &kp SPACE  &kp RSHIFT  &kp RALT
             >;
         };
-
 
         // ===========================================================================================================
         // -----------------------------------------------------------------------------
@@ -403,10 +401,10 @@
         numsym_layer {
             label = "Symbols";
             bindings = <
-    &mt F1 N1  &mt F2 N2  &mt F3 N3  &mt F4 N4      &mt F5 N5           &kp N6          &kp N7      &kp N8      &kp N9   &kp N0
-    &kp TAB    &kp UNDER  &kp MINUS  &kp EQUAL      &kp LS(EQUAL)       &mt RBKT LBKT   &kp AT      &mt DQT SQT &kp DQT  &kp DEL
-    &kp LGUI   &kp EXCL   &kp QMARK  &mt COLON SEMI &kp COLON           &mt RBRC LBRC   &mt RA(LBKT) FSLH  &mt RA(RBKT) BSLH &kp PIPE &none
-                                     &kp LALT       &sk LEFT_GUI        &to 4    &kp RALT
+&mt F1 N1  &mt F2 N2  &mt F3 N3  &mt F4 N4       &mt F5 N5      &kp N6         &kp N7             &kp N8             &kp N9    &kp N0
+&kp TAB    &kp UNDER  &kp MINUS  &kp EQUAL       &kp LS(EQUAL)  &mt RBKT LBKT  &kp AT             &mt DQT SQT        &kp DQT   &kp DEL
+&kp LGUI   &kp EXCL   &kp QMARK  &mt COLON SEMI  &kp COLON      &mt RBRC LBRC  &mt RA(LBKT) FSLH  &mt RA(RBKT) BSLH  &kp PIPE  &none
+                                 &kp LALT        &sk LEFT_GUI   &to 4          &kp RALT
             >;
         };
 
@@ -424,10 +422,10 @@
         nav_layer {
             label = "Nav";
             bindings = <
-   &kp ESC     &kp O  &kp E      &kp R      &kp P           &kp PG_UP   &kp LC(LEFT) &kp UP     &kp LC(RIGHT) &kp DEL
-   &kp DEL     &kp S  &kp D      &kp F      &kp L           &kp PG_DN   &kp LEFT     &kp DOWN   &kp RIGHT  	  &mt LC(BACKSPACE) BACKSPACE
-   &kp LSHIFT  &kp X  &kp C      &kp V      &to 0           &kp HOME    &kp GRAVE    &kp TILDE  &none		  &to 0
-                          		 &kp LCTRL  &kp SPACE       &kp LSHIFT  &kp LCTRL
+&kp ESC     &kp O  &kp E  &kp R      &kp P      &kp PG_UP   &kp LC(LEFT)  &kp UP     &kp LC(RIGHT)  &kp DEL
+&kp DEL     &kp S  &kp D  &kp F      &kp L      &kp PG_DN   &kp LEFT      &kp DOWN   &kp RIGHT      &mt LC(BACKSPACE) BACKSPACE
+&kp LSHIFT  &kp X  &kp C  &kp V      &to 0      &kp HOME    &kp GRAVE     &kp TILDE  &none          &to 0
+                          &kp LCTRL  &kp SPACE  &kp LSHIFT  &kp LCTRL
             >;
         };
 
@@ -445,10 +443,10 @@
         ble_layer {
             label = "BLE";
             bindings = <
-&bt BT_SEL 0  	&bt BT_SEL 1  &bt BT_SEL 2  &bt BT_PRV  &bt BT_NXT		&bt BT_NXT	&bt BT_PRV  &bt BT_SEL 2  &bt BT_SEL 1  &bt BT_SEL 0
-&none    	    &none         &none         &none	    &bt BT_CLR    	&bt BT_CLR  &none       &none         &none         &none
-&to 0 		    &none         &none         &none       &bootloader    	&bootloader &none       &none         &none         &to 0
-                                	        &none       &to 0          	&to 0       &none
+&bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_PRV  &bt BT_NXT   &bt BT_NXT   &bt BT_PRV  &bt BT_SEL 2  &bt BT_SEL 1  &bt BT_SEL 0
+&none         &none         &none         &none       &bt BT_CLR   &bt BT_CLR   &none       &none         &none         &none
+&to 0         &none         &none         &none       &bootloader  &bootloader  &none       &none         &none         &to 0
+                                          &none       &to 0        &to 0        &none
             >;
         };
 
@@ -466,10 +464,10 @@
         comfy_layer {
             label = "Comfy";
             bindings = <
- &kp TILDE  &kp PG_UP    &kp UP         &kp PG_DN     &kp CARET            &kp PG_UP   &kp LC(LEFT) &kp UP     &kp LC(RIGHT)  &kp DEL
- &kp DEL    &kp LEFT     &kp DOWN       &kp RIGHT     &kp LESS_THAN        &kp PG_DN   &kp LEFT     &kp DOWN   &kp RIGHT  	  &mt LC(BACKSPACE) BACKSPACE
- &kp LSHIFT &kp DEL      &kp BACKSPACE  &none         &kp GREATER_THAN     &kp HOME    &kp GRAVE    &kp TILDE  &none		  &to 0
-                                        &kp LCTRL     &kp SPACE            &kp LSHIFT  &kp LCTRL
+&kp TILDE   &kp PG_UP  &kp UP         &kp PG_DN  &kp CARET         &kp PG_UP   &kp LC(LEFT)  &kp UP     &kp LC(RIGHT)  &kp DEL
+&kp DEL     &kp LEFT   &kp DOWN       &kp RIGHT  &kp LESS_THAN     &kp PG_DN   &kp LEFT      &kp DOWN   &kp RIGHT      &mt LC(BACKSPACE) BACKSPACE
+&kp LSHIFT  &kp DEL    &kp BACKSPACE  &none      &kp GREATER_THAN  &kp HOME    &kp GRAVE     &kp TILDE  &none          &to 0
+                                      &kp LCTRL  &kp SPACE         &kp LSHIFT  &kp LCTRL
             >;
         };
 
@@ -487,10 +485,10 @@
         numbers_layer {
             label = "Numbers";
             bindings = <
- &kp KP_DIVIDE  &kp N7   &kp N8   &kp N9      &kp KP_MULTIPLY      &kp NON_US_HASH   &kp LC(LEFT)  &kp UP    &kp LC(RIGHT) &kp DEL
- &kp BACKSLASH  &kp N4   &kp N5   &kp N6      &kp KP_PLUS          &kp LS(N7)        &kp LEFT      &kp DOWN  &kp RIGHT     &kp BACKSPACE
- &kp N0         &kp N1   &kp N2   &kp N3      &kp KP_MINUS         &kp LS(BACKSLASH) &kp GRAVE     &kp COMMA &kp DOT       &to 1
-                                  &kp LGUI    &kp SPACE            &kp LSHIFT        &kp LCTRL
+&kp KP_DIVIDE  &kp N7  &kp N8  &kp N9    &kp KP_MULTIPLY  &kp NON_US_HASH    &kp LC(LEFT)  &kp UP     &kp LC(RIGHT)  &kp DEL
+&kp BACKSLASH  &kp N4  &kp N5  &kp N6    &kp KP_PLUS      &kp LS(N7)         &kp LEFT      &kp DOWN   &kp RIGHT      &kp BACKSPACE
+&kp N0         &kp N1  &kp N2  &kp N3    &kp KP_MINUS     &kp LS(BACKSLASH)  &kp GRAVE     &kp COMMA  &kp DOT        &to 1
+                               &kp LGUI  &kp SPACE        &kp LSHIFT         &kp LCTRL
             >;
         };
 
@@ -508,10 +506,10 @@
         macnav_layer {
             label = "CMAC";
             bindings = <
- &kp TILDE  &kp LA(LEFT) &kp UP         &kp LA(RIGHT) &kp CARET            &kp PG_UP   &kp LA(LEFT) &kp UP     &kp LA(RIGHT)  &kp DEL
- &kp DEL    &kp LEFT     &kp DOWN       &kp RIGHT     &kp LESS_THAN        &kp PG_DN   &kp LEFT     &kp DOWN   &kp RIGHT  	  &kp BACKSPACE
- &kp LSHIFT &kp DEL      &kp BACKSPACE  &none         &kp GREATER_THAN     &kp HOME    &kp GRAVE    &kp TILDE  &none		  &to 1
-                                        &kp LALT      &kp SPACE            &kp LSHIFT  &kp RCTRL
+&kp TILDE   &kp LA(LEFT)  &kp UP         &kp LA(RIGHT)  &kp CARET         &kp PG_UP   &kp LA(LEFT)  &kp UP     &kp LA(RIGHT)  &kp DEL
+&kp DEL     &kp LEFT      &kp DOWN       &kp RIGHT      &kp LESS_THAN     &kp PG_DN   &kp LEFT      &kp DOWN   &kp RIGHT      &kp BACKSPACE
+&kp LSHIFT  &kp DEL       &kp BACKSPACE  &none          &kp GREATER_THAN  &kp HOME    &kp GRAVE     &kp TILDE  &none          &to 1
+                                         &kp LALT       &kp SPACE         &kp LSHIFT  &kp RCTRL
             >;
         };
     };
